@@ -1,10 +1,12 @@
-var env = process.env.NODE_ENV || 'development';
+/* eslint global-require: 0 */
+const env = process.env.NODE_ENV || 'development';
 
 if (env === 'development' || env === 'test') {
-    var config = require('./config.json');
-    var envConfig = config[env];
+  const config = require('./config.json');
+  
+  const envConfig = config[env];
 
-    Object.keys(envConfig).forEach((key) => {
-        process.env[key] = envConfig[key];
-    });
+  Object.keys(envConfig).forEach((key) => {
+      process.env[key] = envConfig[key];
+  });
 }
